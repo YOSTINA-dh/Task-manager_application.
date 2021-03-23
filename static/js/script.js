@@ -3,14 +3,18 @@
 */
 
 $(document).ready(function () {
-    $(".sidenav").sidenav({edge: "right"});
-    $(".collapsible").collapsible();
-    $(".tooltipped").tooltip();
+  $(".sidenav").sidenav({ edge: "right" });
+  $(".collapsible").collapsible();
+  $(".tooltipped").tooltip();
+  $(".datepicker").datepicker({
+    format: "dd mmmm, yyyy",
+    yearRange: 3,
+    showClearBtn: true,
+    i18n: {
+      done: "Select",
+    },
+  });
 });
-
-
-
-
 
 /*
     vanilla JavaScript for MaterializeCSS initialization
