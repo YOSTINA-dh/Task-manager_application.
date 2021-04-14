@@ -6,11 +6,11 @@
     <title>Star Wine Lists</title>
 </head>
 <body>
-    {% for lists in lists %}
-        {{ lists.list_name }}<br>
-        {{ lists.category_name }}<br>
-        {{ lists.list_description }}<br>
-        {{ lists.vintages_date }}<br>
+    {% for list in lists %}
+        {{ list.list_name }}<br>
+        {{ list.category_name }}<br>
+        {{ list.list_description }}<br>
+        {{ list.vintage_date }}<br>
     {% endfor %}
 </body>
 </html>
