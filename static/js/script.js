@@ -4,6 +4,9 @@
 
 $(document).ready(function () {
     $(".sidenav").sidenav({edge: "left"});
+    $('.collapsible').collapsible();
+    $('.collapsible').collapsible('methodName');
+    $('.collapsible').collapsible('methodName', paramName);
 });
 
 
