@@ -1,4 +1,3 @@
-# Import installed libraries and components to the Python file
 import os
 from flask import (
     Flask, flash, render_template,
@@ -22,8 +21,8 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_lists")
 def get_lists():
-    lists = lists(mongo.db.lists.find())
-    return render_template("lists.html", lists=lists)
+    lists = mongo.db.lists.find()
+    return render_template("tasks.html", lists=lists)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -65,31 +64,36 @@ def login():
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(
                     request.form.get("username")))
-                return redirect(url_for("profile", username=session["user"]))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
-                flash("The User Name or Password is Incorrect")
+                flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
 
         else:
             # username doesn't exist
-            flash("The User Name or Password is Incorrect")
+            flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
     return render_template("login.html")
 
 
-@ app.route("/profile/<username>", methods=["GET", "POST"])
+@app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("profile.html", username=username)
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
 
 
 @app.route("/logout")
 def logout():
-    # To remove user from session cookie
+    # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))

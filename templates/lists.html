@@ -1,70 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <ul class="collapsible popout">
-      {% for list in lists %}
+    {% for list in lists %}
+        {{ list.list_name }}<br>
+        {{ list.category_name }}<br>
+        {{ list.list_description }}<br>
+        {{ list.vintage_date }}<br>
+    {% endfor %}
+
+    <ul class="collapsible">
         <li>
-          <div class="collapsible-header black-text teal lighten-4 text-shadow">
-            <i class="fas fa-wine-bottle"></i>
-                <strong>{{ list.list_name }}</strong> : {{ list.vintage_date }}
-                
-                {% endif %}
-            </div>
-            <div class="collapsible-body">
-                <strong>{{ list.category_name }}</strong>
-                <p>{{ list.list_description }}</p>
-            </div>
+            <div class="collapsible-header white-text light-blue darken-4 text-shadow"><i class="fas fa-caret-down"></i>First</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
-        {% endfor %}
+        <li>
+            <div class="collapsible-header white-text light-blue darken-4 text-shadow"><i class="fas fa-caret-down"></i>Second</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header white-text light-blue darken-4 text-shadow"><i class="fas fa-caret-down"></i>Third</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
     </ul>
-
-{% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% extends "base.html" %}
-{% block content %}
-
-<ul class="collapsible popout">
-  {% for list in lists %}
-  <li>
-    <div class="collapsible-header black-text teal lighten-4 text-shadow">
-      <i class="fas fa-wine-bottle"></i>
-      <strong>{{ lists.list_name }}</strong> : {{ lists.vintage_date }}
-      {% endif %}
-    </div>
-    <div class="collapsible-body">
-      <strong>{{ lists.category_name }}</strong>
-      <p>{{ lists.list_description }}</p>
-    </div>
-  </li>
-  {% endfor %}
-</ul>
-
-{% endblock %}
